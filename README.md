@@ -1,2 +1,10 @@
-# infusion-workflow
-Resources associated with INFUSION-WF – Office 365 &amp; SharePoint Deep Dive into Developing Custom Workflows  
+Office 365 & SharePoint Deep Dive into Developing Custom Workflows
+==================================================================
+
+> Workflow changed quite a bit in the SharePoint 2013 release from previous versions of SharePoint. The new workflow platform is implemented with a new product called Workflow Manager 1.0. In this seminar you will learn all the fundamentals for creating custom workflows in SharePoint 2013 using Workflow Manager 1.0 and Visual Studio 2013. After a fundamentals overview, we will move on to some advanced topics such as debugging of the workflows you are creating as well as how to perform common tasks in today's business world. This includes learning how to create custom forms, leverage the new Workflow Services client APIs and how to create custom actions and activities for Visual Studio and SharePoint Designer authored workflows.
+> 
+> Finally, we will move onto working with web services in your custom workflows. This capability can be considered one of the biggest improvements to the platform from previous versions of SharePoint. The ability to call custom web services opens your workflows up to unlimited options. To that effect, in this seminar you will learn how to read and write to anonymous web services and how to authenticate and interact with the SharePoint 2013 REST API when the provided activities don't provide the necessary tools to complete the task. Finally you will also learn how to communicate with secured web services including third party OAuth secured services and how to deploy, and interact, with your own custom secured web services.
+
+This repository contains resources related to the [Critical Path Training](http://www.criticalpathtraining.com) Infusion Seminar, a 2-day hands-on & online event hosted by [Andrew Connell](http://www.andrewconnell.com). 
+
+For more information on this event & how you can attend future events, check the details found on Critical Path Training's website: **[Office 365 & SharePoint Deep Dive into Developing Custom Workflows](https://www.criticalpathtraining.com/sharepoint-courses/office-365-sharepoint-deep-dive-developing-custom-workflows/)**
