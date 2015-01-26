@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Fleet Service Management" Url="wfsvc/620d44e256994b1c8f1ec3c9c01ee6fd">
+    <File Url="Workflow.xaml" Type="GhostableInLibrary" Path="Fleet Service Management\Workflow.xaml" DoGUIDFixUp="TRUE">
+      <Property Name="ContentType" Value="WorkflowServiceDefinition" />
+      <Property Name="isReusable" Value="true" />
+      <Property Name="RequiresInitiationForm" Value="False" />
+      <Property Name="RequiresAssociationForm" Value="False" />
+      <Property Name="WSPublishState" Value="3" />
+      <Property Name="WSDisplayName" Value="Fleet Service Management" />
+      <Property Name="WSDescription" Value="My 'Fleet Service Management' Workflow" />
+      <!-- If you change the name or Url of your custom initiation or association form, 
+           remember to update the corresponding property value (InitiationUrl or AssociationUrl) to match the new web relative url.
+      -->
+      <Property Name="RestrictToType" Value="List" />
+      <Property Name="RestrictToScope" Value="{$ListId:Shared Documents;}" />
+    </File>
+    <File Url="WorkflowStartAssociation" Path="Fleet Service Management\WorkflowStartAssociation" Type="GhostableInLibrary">
+      <Property Name="WSDisplayName" Value="Fleet Service Management - Workflow Start" />
+      <Property Name="ContentType" Value="WorkflowServiceSubscription" />
+      <Property Name="WSPublishState" Value="3" />
+      <Property Name="WSEventType" Value="WorkflowStart" />
+      <Property Name="WSEnabled" Value="true" />
+      <Property Name="WSGUID" Value="c8c96809-ee6b-4aab-ae3a-f0b365b63ec8" />
+      <Property Name="WSEventSourceGUID" Value="{$ListId:Shared Documents;}" />
+      <Property Name="Microsoft.SharePoint.ActivationProperties.ListId" Value="{$ListId:Shared Documents;}" />
+      <Property Name="HistoryListId" Value="{$ListId:Lists/WorkflowHistoryList;}" />
+      <Property Name="TaskListId" Value="{$ListId:Lists/WorkflowTaskList;}" />
+    </File>
+  </Module>
+  <ListInstance FeatureId="{2c63df2b-ceab-42c6-aeff-b3968162d4b1}"
+                TemplateType="4501"
+                Title="wfsvc"
+                Description="This list instance is used by SharePoint to keep track of workflows. Do not modify."
+                Url="wfsvc"
+                RootWebOnly="FALSE" />
+</Elements>

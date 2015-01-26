@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="VacationRequest" Url="wfsvc/9c723bca9b78470d958f3911d90ac679">
+    <File Url="Workflow.xaml" Type="GhostableInLibrary" Path="VacationRequest\Workflow.xaml" DoGUIDFixUp="TRUE">
+      <Property Name="ContentType" Value="WorkflowServiceDefinition" />
+      <Property Name="isReusable" Value="true" />
+      <Property Name="RequiresInitiationForm" Value="False" />
+      <Property Name="RequiresAssociationForm" Value="False" />
+      <Property Name="WSPublishState" Value="3" />
+      <Property Name="WSDisplayName" Value="Vacation Request" />
+      <Property Name="WSDescription" Value="My 'Vacation Request' Workflow" />
+      <!-- If you change the name or Url of your custom initiation or association form, 
+           remember to update the corresponding property value (InitiationUrl or AssociationUrl) to match the new web relative url.
+      -->
+      <Property Name="RestrictToType" Value="List" />
+      <Property Name="RestrictToScope" Value="{$ListId:Shared Documents;}" />
+    </File>
+    <File Url="WorkflowStartAssociation" Path="VacationRequest\WorkflowStartAssociation" Type="GhostableInLibrary">
+      <Property Name="WSDisplayName" Value="VacationRequest - Workflow Start" />
+      <Property Name="ContentType" Value="WorkflowServiceSubscription" />
+      <Property Name="WSPublishState" Value="3" />
+      <Property Name="WSEventType" Value="WorkflowStart" />
+      <Property Name="WSEnabled" Value="true" />
+      <Property Name="WSGUID" Value="74badaf2-c772-407e-800d-2918306b2d1c" />
+      <Property Name="WSEventSourceGUID" Value="{$ListId:Shared Documents;}" />
+      <Property Name="Microsoft.SharePoint.ActivationProperties.ListId" Value="{$ListId:Shared Documents;}" />
+      <Property Name="HistoryListId" Value="{$ListId:Lists/WorkflowHistoryList;}" />
+      <Property Name="TaskListId" Value="{$ListId:Lists/WorkflowTaskList;}" />
+    </File>
+  </Module>
+  <ListInstance FeatureId="{2c63df2b-ceab-42c6-aeff-b3968162d4b1}"
+                TemplateType="4501"
+                Title="wfsvc"
+                Description="This list instance is used by SharePoint to keep track of workflows. Do not modify."
+                Url="wfsvc"
+                RootWebOnly="FALSE" />
+</Elements>

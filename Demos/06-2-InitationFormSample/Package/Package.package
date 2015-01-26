@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="a68631ef-3490-460c-b854-a5ba9986ac56" 
+        solutionId="a68631ef-3490-460c-b854-a5ba9986ac56" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="InitationFormSample"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="387cb9fc-abdc-4892-84be-2aa4a1001841" />
+  </features>
+</package>

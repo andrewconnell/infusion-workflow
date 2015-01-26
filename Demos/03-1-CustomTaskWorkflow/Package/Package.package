@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="3d82ee73-2184-47f4-9024-85fb53175f35" 
+        solutionId="3d82ee73-2184-47f4-9024-85fb53175f35" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="CustomTaskWorkflow"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="f2434db0-6ff4-4b5d-909b-c27e8751ea8d" />
+  </features>
+</package>

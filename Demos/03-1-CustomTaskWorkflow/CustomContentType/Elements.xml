@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Workflow Task (SharePoint 2013) (0x0108003365C4474CAE8C42BCE396314E88E51F) -->
+  <ContentType ID="0x0108003365C4474CAE8C42BCE396314E88E51F00D368DFB2B31A447BB184BA1334E5119E" Name="CustomContentType" Group="Custom Content Types" Description="My Content Type" Inherits="TRUE" Version="0">
+    <FieldRefs>
+      <FieldRef ID="{7b7edd9e-f5d1-4558-a2c8-e733dcfb0a5e}" DisplayName="Better State" Required="FALSE" Name="CustomSiteColumn" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

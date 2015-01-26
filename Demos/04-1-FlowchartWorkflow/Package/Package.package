@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="8ec6544d-aa03-44e5-ac57-c4743cae55a8" 
+        solutionId="8ec6544d-aa03-44e5-ac57-c4743cae55a8" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="FlowchartWorkflow"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="f34abde6-42d8-4824-838b-f8cbc194c0e2" />
+  </features>
+</package>

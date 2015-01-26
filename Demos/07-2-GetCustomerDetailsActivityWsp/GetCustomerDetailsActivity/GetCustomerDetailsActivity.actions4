@@ -1,0 +1,45 @@
+﻿<Action Name="Get Customer Details" 
+        ClassName="GetCustomerDetailsActivityWsp.GetCustomerDetailsActivity" 
+        Category="Custom Activities" 
+        AppliesTo="all">
+  <RuleDesigner Sentence="Fetch customer details for customer %1 from Northwind as %2, %3 and %4.">
+    <FieldBind Field="CustomerId"
+               Id="1"
+               DesignerType="TextBox"
+               Text="id"
+               DisplayName="Customer Id" />
+    <FieldBind Field="CustomerFullName"
+               Id="2"
+               DesignerType="TextBox"
+               Text="fullName"
+               DisplayName="Customer Full Name" />
+    <FieldBind Field="CustomerAddress"
+               Id="3"
+               DesignerType="TextBox"
+               Text="address"
+               DisplayName="Customer Address" />
+    <FieldBind Field="CustomerPhone"
+               Id="4"
+               DesignerType="TextBox"
+               Text="phone"
+               DisplayName="Customer Phone Number" />
+  </RuleDesigner>
+  <Parameters>
+    <Parameter Name="CustomerId" 
+               Type="System.String, mscorlib" 
+               Direction="In" 
+               DesignerType="Hide" />
+    <Parameter Name="CustomerFullName"
+               Type="System.String, mscorlib"
+               Direction="Out"
+               DesignerType="Hide" />
+    <Parameter Name="CustomerAddress"
+               Type="System.String, mscorlib"
+               Direction="Out"
+               DesignerType="Hide" />
+    <Parameter Name="CustomerPhone"
+               Type="System.String, mscorlib"
+               Direction="Out"
+               DesignerType="Hide" />
+  </Parameters>
+</Action>

@@ -1,0 +1,168 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="GetCustomerDetailsActivityApp.GetCustomerDetailsActivity"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/workflow/2012/07/xaml/activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="CustomerId" Type="InArgument(x:String)" />
+    <x:Property Name="CustomerFullName" Type="OutArgument(x:String)" />
+    <x:Property Name="CustomerAddress" Type="OutArgument(x:String)" />
+    <x:Property Name="CustomerPhone" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>GetCustomerDetailsActivityApp.GetCustomerDetailsActivity_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Microsoft.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.DesignTime.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>GetCustomerDetailsActivityApp</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="NorthwindServiceUrl" />
+      <Variable x:TypeArguments="p:DynamicValue" Name="NorthwindServiceResponse" />
+      <Variable x:TypeArguments="x:String" Name="contactName" />
+      <Variable x:TypeArguments="x:String" Name="address" />
+      <Variable x:TypeArguments="x:String" Name="phone" />
+    </Sequence.Variables>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">NorthwindServiceUrl</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">"http://services.odata.org/Northwind/Northwind.svc/Customers('" + CustomerId + "')"</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String">"Service to call:" +NorthwindServiceUrl</mca:CSharpValue>
+      </InArgument>
+    </WriteLine>
+    <p:HttpSend sap2010:WorkflowViewState.IdRef="HttpSend_1" Method="GET">
+      <p:HttpSend.RequestHeaders>
+        <InArgument x:TypeArguments="p:DynamicValue">
+          <p:SetDynamicValueProperties>
+            <scg:Dictionary x:TypeArguments="x:String, InArgument">
+              <InArgument x:TypeArguments="x:String" x:Key="Accept">application/json;odata=verbose</InArgument>
+            </scg:Dictionary>
+          </p:SetDynamicValueProperties>
+        </InArgument>
+      </p:HttpSend.RequestHeaders>
+      <p:HttpSend.ResponseContent>
+        <OutArgument x:TypeArguments="p:DynamicValue">
+          <mca:CSharpReference x:TypeArguments="p:DynamicValue">NorthwindServiceResponse</mca:CSharpReference>
+        </OutArgument>
+      </p:HttpSend.ResponseContent>
+      <p:HttpSend.Uri>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">NorthwindServiceUrl</mca:CSharpValue>
+        </InArgument>
+      </p:HttpSend.Uri>
+    </p:HttpSend>
+    <p:GetDynamicValueProperties sap2010:WorkflowViewState.IdRef="GetDynamicValueProperties_1">
+      <p:GetDynamicValueProperties.Source>
+        <InArgument x:TypeArguments="p:DynamicValue">
+          <mca:CSharpValue x:TypeArguments="p:DynamicValue">NorthwindServiceResponse</mca:CSharpValue>
+        </InArgument>
+      </p:GetDynamicValueProperties.Source>
+      <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+        <OutArgument x:TypeArguments="x:String" x:Key="d/ContactName">
+          <mca:CSharpReference x:TypeArguments="x:String">contactName</mca:CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="d/Address">
+          <mca:CSharpReference x:TypeArguments="x:String">address</mca:CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="d/Phone">
+          <mca:CSharpReference x:TypeArguments="x:String">phone</mca:CSharpReference>
+        </OutArgument>
+      </scg:Dictionary>
+    </p:GetDynamicValueProperties>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerFullName</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">contactName</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerAddress</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">address</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerPhone</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">phone</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <sads:DebugSymbol.Symbol>d19jOlxkZXZcR2V0Q3VzdG9tZXJEZXRhaWxzQWN0aXZpdHlBcHBcR2V0Q3VzdG9tZXJEZXRhaWxzQWN0aXZpdHlcR2V0Q3VzdG9tZXJEZXRhaWxzQWN0aXZpdHkueGFtbBovA5QBDgIBATcFQg4DAY0BQwVHEQMBggFIBVwSAgFqXQVuIwIBQW8Feg4CASx7BYYBDgIBF4cBBZIBDgIBAj8LP5wBAwGYAToLOmQDAY4BRQlFbgMBgwFLC08pAwGAAVkLWVwCAXZUC1RvAgFsSEVISgIBa2ULZVwCAWBoC2hYAgFWYAtgZwIBTGsLa1YCAUJ3C3dUAgE3cgtyYQIBLYMBC4MBUAIBIn4LfmACARiPAQuPAU4CAQ2KAQuKAV4CAQNNRU1jAwGBAQ==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="HttpSend_1" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="GetDynamicValueProperties_1" sap:VirtualizedContainerService.HintSize="247,92" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="269,828">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetCustomerDetailsActivityApp.GetCustomerDetailsActivity_1" sap:VirtualizedContainerService.HintSize="309,908" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

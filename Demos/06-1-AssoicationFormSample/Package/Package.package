@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="a6a5ceaf-09b8-4e35-98bf-f702c18ed83d" 
+        solutionId="a6a5ceaf-09b8-4e35-98bf-f702c18ed83d" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="AssoicationFormSample"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="d8e15428-4e9c-49d3-ba1e-a3b7c5e3d5ba" />
+  </features>
+</package>

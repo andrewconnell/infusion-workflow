@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="362c32cf-424a-4812-87db-4fe3bdd89e37" 
+        solutionId="362c32cf-424a-4812-87db-4fe3bdd89e37" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="AnonReadWrite"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="a2f4c3a7-6eb6-47fe-a2d4-85bc8f6d4230" />
+  </features>
+</package>

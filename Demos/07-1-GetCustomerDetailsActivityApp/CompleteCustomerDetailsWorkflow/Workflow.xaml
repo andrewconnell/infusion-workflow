@@ -1,0 +1,190 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="GetCustomerDetailsActivityApp.Complete_Customer_Details.Workflow" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="GetCustomerDetailsActivityApp.Complete_Customer_Details.Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:msdad="clr-namespace:Microsoft.SharePoint.DesignTime.Activities.Design;assembly=Microsoft.SharePoint.DesignTime.Activities.Design"
+ xmlns:p="http://schemas.microsoft.com/workflow/2012/07/xaml/activities"
+ xmlns:p1="wf://workflow.windows.net/$Activities"
+ xmlns:p2="wf://workflow.windows.net/$Current/$Activities/GetCustomerDetailsActivityApp"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Microsoft.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.DesignTime.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>GetCustomerDetailsActivityApp</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="CustomerId" />
+      <Variable x:TypeArguments="p:DynamicValue" Name="ItemProperties" />
+      <Variable x:TypeArguments="x:String" Name="CustomerFullName" />
+      <Variable x:TypeArguments="x:String" Name="CustomerAddress" />
+      <Variable x:TypeArguments="x:String" Name="CustomerPhone" />
+    </Sequence.Variables>
+    <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}" sap2010:WorkflowViewState.IdRef="LookupSPListItem_1">
+      <p1:LookupSPListItem.ItemId>
+        <InArgument x:TypeArguments="x:Int32">
+          <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+            <p1:GetCurrentItemId />
+          </p:ExpressionContainerValue>
+        </InArgument>
+      </p1:LookupSPListItem.ItemId>
+      <p1:LookupSPListItem.ListId>
+        <InArgument x:TypeArguments="s:Guid">
+          <p:ExpressionContainerValue x:TypeArguments="s:Guid">
+            <p1:GetCurrentListId />
+          </p:ExpressionContainerValue>
+        </InArgument>
+      </p1:LookupSPListItem.ListId>
+      <p1:LookupSPListItem.Result>
+        <OutArgument x:TypeArguments="p:DynamicValue">
+          <mca:CSharpReference x:TypeArguments="p:DynamicValue">ItemProperties</mca:CSharpReference>
+        </OutArgument>
+      </p1:LookupSPListItem.Result>
+    </p1:LookupSPListItem>
+    <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_1">
+      <p:GetODataProperties.Source>
+        <InArgument x:TypeArguments="p:DynamicValue">
+          <mca:CSharpValue x:TypeArguments="p:DynamicValue">ItemProperties</mca:CSharpValue>
+        </InArgument>
+      </p:GetODataProperties.Source>
+      <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+        <OutArgument x:TypeArguments="x:String" x:Key="Title">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerId</mca:CSharpReference>
+        </OutArgument>
+      </scg:Dictionary>
+    </p:GetODataProperties>
+    <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_1">
+      <p1:WriteToHistory.Message>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">"Retrieving customer details for customer ID:" +CustomerId</mca:CSharpValue>
+        </InArgument>
+      </p1:WriteToHistory.Message>
+    </p1:WriteToHistory>
+    <p2:GetCustomerDetailsActivity sap2010:WorkflowViewState.IdRef="GetCustomerDetailsActivity_1">
+      <p2:GetCustomerDetailsActivity.CustomerAddress>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerAddress</mca:CSharpReference>
+        </OutArgument>
+      </p2:GetCustomerDetailsActivity.CustomerAddress>
+      <p2:GetCustomerDetailsActivity.CustomerFullName>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerFullName</mca:CSharpReference>
+        </OutArgument>
+      </p2:GetCustomerDetailsActivity.CustomerFullName>
+      <p2:GetCustomerDetailsActivity.CustomerId>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">CustomerId</mca:CSharpValue>
+        </InArgument>
+      </p2:GetCustomerDetailsActivity.CustomerId>
+      <p2:GetCustomerDetailsActivity.CustomerPhone>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">CustomerPhone</mca:CSharpReference>
+        </OutArgument>
+      </p2:GetCustomerDetailsActivity.CustomerPhone>
+    </p2:GetCustomerDetailsActivity>
+    <p1:UpdateListItem ItemGuid="{x:Null}" ListItemProperties="{x:Null}" sap2010:WorkflowViewState.IdRef="UpdateListItem_1">
+      <p1:UpdateListItem.ItemId>
+        <InArgument x:TypeArguments="x:Int32">
+          <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+            <p1:GetCurrentItemId />
+          </p:ExpressionContainerValue>
+        </InArgument>
+      </p1:UpdateListItem.ItemId>
+      <p1:UpdateListItem.ListId>
+        <InArgument x:TypeArguments="s:Guid">
+          <p:ExpressionContainerValue x:TypeArguments="s:Guid">
+            <p1:GetCurrentListId />
+          </p:ExpressionContainerValue>
+        </InArgument>
+      </p1:UpdateListItem.ListId>
+      <p1:UpdateListItem.ListItemPropertiesDynamicValue>
+        <InArgument x:TypeArguments="p:DynamicValue">
+          <p:SetDynamicValueProperties>
+            <scg:Dictionary x:TypeArguments="x:String, InArgument">
+              <InArgument x:TypeArguments="x:String" x:Key="FullName">
+                <mca:CSharpValue x:TypeArguments="x:String">CustomerFullName</mca:CSharpValue>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WorkAddress">
+                <mca:CSharpValue x:TypeArguments="x:String">CustomerAddress</mca:CSharpValue>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WorkPhone">
+                <mca:CSharpValue x:TypeArguments="x:String">CustomerPhone</mca:CSharpValue>
+              </InArgument>
+            </scg:Dictionary>
+          </p:SetDynamicValueProperties>
+        </InArgument>
+      </p1:UpdateListItem.ListItemPropertiesDynamicValue>
+    </p1:UpdateListItem>
+    <sads:DebugSymbol.Symbol>d1JjOlxkZXZcR2V0Q3VzdG9tZXJEZXRhaWxzQWN0aXZpdHlBcHBcQ29tcGxldGVDdXN0b21lckRldGFpbHNXb3JrZmxvd1xXb3JrZmxvdy54YW1sGisDkwEOAgEBMwVHGwIBRUgFUxwCAThUBVoZAgExWwVwJQIBGHEFkQEZAgECPQs/KAIBTUQLRGUCAUc2CzgoAgFGSwtLXQIBP1ALUFsCATlXC1eDAQIBMmgLaFMCAStjC2NhAgElbQttXgIBH14LXmACARmCAQuOASkCAQV7C30oAgEEdAt2KAIBAz4NPiQDAU0BNw03JAMBRgGIARGIAV4CARKLARGLAVwCAQyFARGFAV8CAQZ8DXwkAwEEAXUNdSQDAQMB</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LookupSPListItem_1" sap:VirtualizedContainerService.HintSize="247,89">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
+              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
+              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
+            </scg:Dictionary>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetODataProperties_1" sap:VirtualizedContainerService.HintSize="247,92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="Properties.SelectedEntityType">Lists/Customers</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteToHistory_1" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="GetCustomerDetailsActivity_1" sap:VirtualizedContainerService.HintSize="247,22" />
+      <sap2010:ViewStateData Id="UpdateListItem_1" sap:VirtualizedContainerService.HintSize="247,68">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
+              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
+              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
+            </scg:Dictionary>
+            <x:String x:Key="ListItemPropertiesDynamicValue.SelectedEntityType">Lists/Customers</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="269,623">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetCustomerDetailsActivityApp.Complete_Customer_Details.Workflow_1" sap:VirtualizedContainerService.HintSize="309,703" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

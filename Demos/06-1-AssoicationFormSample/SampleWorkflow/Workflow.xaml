@@ -1,0 +1,75 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AssoicationFormSample.SampleWorkflow.Workflow" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="AssoicationFormSample.SampleWorkflow.Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.microsoft.com/workflow/2012/07/xaml/activities"
+ xmlns:p1="wf://workflow.windows.net/$Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.DesignTime.Activities.16.0</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>AssoicationFormSample</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="AssociationFormValue" />
+    </Sequence.Variables>
+    <p:GetConfigurationValue Name="AssociationFormValue">
+      <p:GetConfigurationValue.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">AssociationFormValue</mca:CSharpReference>
+        </OutArgument>
+      </p:GetConfigurationValue.Result>
+      <sap2010:WorkflowViewState.IdRef>GetConfigurationValue_2</sap2010:WorkflowViewState.IdRef>
+    </p:GetConfigurationValue>
+    <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_1">
+      <p1:WriteToHistory.Message>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">"AssociationFormValue = " + AssociationFormValue</mca:CSharpValue>
+        </InArgument>
+      </p1:WriteToHistory.Message>
+    </p1:WriteToHistory>
+    <sads:DebugSymbol.Symbol>d0JDOlxEZXZcY3B0XDA2LTEtQXNzb2ljYXRpb25Gb3JtU2FtcGxlXFNhbXBsZVdvcmtmbG93XFdvcmtmbG93LnhhbWwFKAM8DgIBASwFMx8CAQU0BToZAgECLwsvZQIBBjcLN3kCAQM=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="GetConfigurationValue_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteToHistory_1" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,254">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AssoicationFormSample.SampleWorkflow.Workflow_1" sap:VirtualizedContainerService.HintSize="262,334" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

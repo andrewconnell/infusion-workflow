@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="7232d47c-193c-4f38-adc9-218bbe27271c" 
+        solutionId="7232d47c-193c-4f38-adc9-218bbe27271c" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="StateMachineWorkflow"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="014dbe96-4d8a-42fc-8a0e-b32608d30761" />
+  </features>
+</package>
