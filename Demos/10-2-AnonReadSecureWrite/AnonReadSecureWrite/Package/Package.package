@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="65fe550a-3897-4c11-a464-0fc5a1062e10" solutionId="65fe550a-3897-4c11-a464-0fc5a1062e10" resetWebServer="false" sharePointProductVersion="15.0" name="AnonReadSecureWrite" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="7521d84e-6e22-445d-947e-1adb6e6f432f" />
+  </features>
+</package>

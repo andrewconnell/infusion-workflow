@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="4a95afb3-b7bc-445e-b07a-51764c3dc58a" 
+        solutionId="4a95afb3-b7bc-445e-b07a-51764c3dc58a" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="SalesforceLookup"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="8b0d5020-ba93-4aec-b9ab-df3d0174662c" />
+  </features>
+</package>
