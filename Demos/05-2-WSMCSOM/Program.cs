@@ -9,10 +9,25 @@ using Microsoft.SharePoint.Client.WorkflowServices;
 namespace WSMCSOM {
   class Program {
     static void Main(string[] args) {
-      string siteCollectionUrl = "http://dev.sp.swampland.local";
+      #region login
+      // target site to test this against
+      const string siteCollectionUrl = "https://aconn.sharepoint.com/sites/infusion";
+      Uri siteUri = new Uri(siteCollectionUrl);
 
-      // get client context & workflow service manager
-      ClientContext clientContext = new ClientContext(siteCollectionUrl);
+      // login as an app with SharePoint Online & obtain access token
+      //    this uses the client ID & secret found in the app.config
+      // you must have manually created an app & granted it app only permissions manually
+      //    through the browser prior to this
+      var accessToken = TokenHelper.GetAppOnlyAccessToken(TokenHelper.SharePointPrincipal, 
+        siteUri.Authority, 
+        TokenHelper.GetRealmFromTargetUrl(siteUri));
+      
+      // get client context & 
+      ClientContext clientContext = TokenHelper.GetClientContextWithAccessToken(siteCollectionUrl, 
+        accessToken.AccessToken);
+      #endregion
+
+      // get instance of workflow service manager
       WorkflowServicesManager wfServicesManager = new WorkflowServicesManager(clientContext, clientContext.Web);
 
       // get Documents, Workflow history & task list IDs
@@ -22,10 +37,10 @@ namespace WSMCSOM {
       List documentsList = site.Lists.GetByTitle("Documents");
       clientContext.Load(documentsList, list => list.Id);
 
-      List historyList = site.Lists.GetByTitle("WorkflowHistoryList");
+      List historyList = site.Lists.GetByTitle("Workflow History");
       clientContext.Load(historyList, list => list.Id);
 
-      List taskList = site.Lists.GetByTitle("WorkflowTaskList");
+      List taskList = site.Lists.GetByTitle("Workflow Tasks");
       clientContext.Load(taskList, list => list.Id);
 
       clientContext.ExecuteQuery();
@@ -59,17 +74,16 @@ namespace WSMCSOM {
       Guid workflowDefinitionId = DeploymentService.GetOneInstalledWorkflow(ref clientContext, ref wfServicesManager);
 
       // create a new association
-      SubscriptionService.CreateAssociation(ref clientContext,
-                                            ref wfServicesManager,
-                                            workflowDefinitionId,
-                                            documentsList.Id,
-                                            historyList.Id,
-                                            taskList.Id);
+      //SubscriptionService.CreateAssociation(ref clientContext,
+      //                                      ref wfServicesManager,
+      //                                      workflowDefinitionId,
+      //                                      documentsList.Id,
+      //                                      historyList.Id,
+      //                                      taskList.Id);
 
       // list all associations
       SubscriptionService.ListAllAssociations(ref clientContext, ref wfServicesManager);
       #endregion
-
 
       #region WSM Instance Service
       Console.WriteLine();
@@ -80,14 +94,14 @@ namespace WSMCSOM {
       var workflowSubscription = SubscriptionService.GetOneSubscription(ref clientContext, ref wfServicesManager);
 
       // create a new instance
-      InstanceService.CreateInstance(ref clientContext, ref wfServicesManager, workflowSubscription);
+      //InstanceService.CreateInstance(ref clientContext, ref wfServicesManager, workflowSubscription);
 
       // list all instances
       InstanceService.ListAllInstances(ref clientContext, ref wfServicesManager, documentsList.Id);
 
       // publish custom event to a running instance
-      WorkflowInstance instance = InstanceService.GetOneRunningInstance(ref clientContext, ref wfServicesManager, documentsList.Id);
-      InstanceService.PublishMessageToWorkflowInstance(ref clientContext, ref wfServicesManager, instance);
+      //WorkflowInstance instance = InstanceService.GetOneRunningInstance(ref clientContext, ref wfServicesManager, documentsList.Id);
+      //InstanceService.PublishMessageToWorkflowInstance(ref clientContext, ref wfServicesManager, instance);
 
       #endregion
     }
