@@ -11,7 +11,7 @@ namespace WSMCSOM {
     static void Main(string[] args) {
       #region login
       // target site to test this against
-      const string siteCollectionUrl = "https://aconn.sharepoint.com/sites/infusion";
+      const string siteCollectionUrl = "YOUR-SHAREPOINT-SITE-URL";
       Uri siteUri = new Uri(siteCollectionUrl);
 
       // login as an app with SharePoint Online & obtain access token
